@@ -50,11 +50,13 @@
       section[data-tab="true"] {
         display: initial;
         transition: all .5s;
+        /* opacity: 1; */
       }
 
       section[data-tab="false"] {
         display: none;
-        transition: all .5s;
+        transition: opacity .5s;
+        /* opacity: 0; */
       }
     </style>
   </head>
@@ -143,6 +145,7 @@
         initActive(tabs);
         e.target.classList.add("active");
         e.target.style.borderBottomColor = color();
+        // e.target.style.color = color()
       });
     });
   </script>
