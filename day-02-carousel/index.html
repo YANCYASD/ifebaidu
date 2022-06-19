@@ -138,16 +138,28 @@
     var rightSpan = document.querySelector(".right-arrow");
     var slider = document.querySelector(".slider-item-container");
     var sliderWidth = document.querySelector("#slider").offsetWidth;
+    var imgLength = document.querySelectorAll("a").length;
     var sliderIndex = 0;
+    var a = false;
     rightSpan.addEventListener("click", () => {
-      sliderIndex++;
       console.log(sliderIndex);
-      animate(slider, -(sliderWidth - slider.offsetLeft));
+      if (sliderIndex < imgLength - 1 && a === false) {
+        a = true;
+        sliderIndex++;
+        animate(slider, -(sliderWidth - slider.offsetLeft), () => {
+          a = false;
+        });
+      }
     });
     leftSpan.addEventListener("click", () => {
-      sliderIndex--;
       console.log(sliderIndex);
-      animate(slider,(sliderWidth + slider.offsetLeft))
+      if (sliderIndex > 0 && a === false) {
+        a = true;
+        sliderIndex--;
+        animate(slider, sliderWidth + slider.offsetLeft, () => {
+          a = false;
+        });
+      }
     });
   </script>
 </html>
