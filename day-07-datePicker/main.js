@@ -51,6 +51,9 @@
             if(!item.isCurrentMonth){
                 td.classList.add("not-current-month")
             }
+            if(item.isCurrentDay){
+                td.classList.add("current-day")
+            }
             td.innerHTML = item.showDate
             tr.append(td)
         }) 

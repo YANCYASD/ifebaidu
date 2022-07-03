@@ -2,8 +2,10 @@
     let datePicker = {};
     datePicker.getMonthDate = function (year, month) {
       let ret = [];
+      let today = new Date();
+      let currentDate = today.getDate()
+      console.log(currentDate);
       if (!year || !month) {
-        let today = new Date();
         year = today.getFullYear();
         month = today.getMonth() + 1;
       }
@@ -35,11 +37,13 @@
           }
       }
           for(let i=1;i<=lastDate;i++){
+            let isCurrentDay = currentDate === i
               ret.push({
                   month:month,
                   date:i,
                   showDate:i,
                   isCurrentMonth:true,
+                  isCurrentDay,
               })
           }
       if(lastWeekDay !== 6){
