@@ -13,13 +13,14 @@ let calcObj = {
 };
 
 numberArea.addEventListener("click", (e) => {
-  if (StringNumberToInt(calculateResult.innerHTML) === 0) {
-    let tempNumber = parseInt(e.target.innerHTML);
-    console.log(tempNumber);
+  if (parseInt(calculateResult.innerHTML) === 0) {
+    calcObj.number = parseInt(e.target.innerHTML);
+    console.log(calcObj.number);
+    calculateResult.innerHTML = calcObj.number;
+  } else {
+    calcObj.number =
+      parseInt(calculateResult.innerHTML) * 10 + parseInt(e.target.innerHTML);
+    calculateResult.innerHTML = calcObj.number;
+    console.log(calcObj);
   }
 });
-
-
-function StringNumberToInt(num){
-    return parseInt(num)
-}
