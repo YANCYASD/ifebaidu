@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zn-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .con {
+        position: relative;
+        height: 400px;
+        margin: 100px auto;
+        width: 400px;
+        border: 20px solid #000;
+        /* padding-top: 60px; */
+        background-color: pink;
+      }
+
+      .item {
+        position: absolute;
+        left: 30px;
+        top: 0;
+        height: 100px;
+        width: 100px;
+        background-color: purple;
+        cursor: grab;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <div class="item"></div>
+    </div>
+  </body>
+  <script>
+    var con = document.querySelector(".con");
+
+    var item = document.querySelector(".item");
+    item.addEventListener("mousedown", (e) => {
+      var disX = e.clientX - item.offsetLeft;
+      var disY = e.clientY - item.offsetTop;
+      var c = (e)=>{
+        item.style.left = e.clientX - disX + "px";
+        item.style.top = e.clientY - disY + "px";
+        item.style.cursor = "grab"
+      }
+      var itemMove = document.addEventListener("mousemove", c);
+      document.addEventListener("mouseup", () => {
+      document.removeEventListener("mousemove",c)
+      item.style.cursor = "initial"
+    });
+    });
+    
+  </script>
+</html>

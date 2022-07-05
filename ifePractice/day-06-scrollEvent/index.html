@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zn-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .back {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 20px;
+        bottom: 60px;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background-color: rgb(173, 217, 255);
+        font-size: 12px;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+        font-weight: 600;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="back hidden">
+      Back<br />
+      To <br />
+      Top
+    </div>
+  </body>
+  <script>
+    function addItem(num) {
+      for (let i = 0; i < num; i++) {
+        let h3 = document.createElement("h3");
+        h3.innerHTML = new Date().toString();
+        document.body.append(h3);
+      }
+    }
+
+    addItem(50);
+
+    let scrollHeight = document.body.scrollHeight;
+    let back = document.querySelector(".back");
+
+    window.addEventListener("scroll", () => {
+      //   console.log(
+      //     document.documentElement.scrollTop +
+      //       document.documentElement.clientHeight
+      //   );
+      if (
+        document.documentElement.scrollTop + 100 >
+        document.documentElement.scrollHeight -
+          document.documentElement.clientHeight
+      ) {
+        addItem(10);
+      }
+      if (
+        document.documentElement.scrollTop >
+        document.documentElement.clientHeight/2
+      ) {
+        back.classList.remove("hidden");
+      } else {
+        back.classList.add("hidden");
+      }
+    });
+
+    back.addEventListener("click", () => {
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
+</html>

@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pink {
+    height: 1000px;
+    width: 100%;
+    background-color: pink;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.green {
+    height: 1500px;
+    width: 100%;
+    background-color: greenyellow;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.brown {
+    height: 800px;
+    width: 100%;
+    background-color: brown;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.nav {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    width: 100px;
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    border-bottom: 0;
+}
+
+.sub {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px white solid;
+    transition: all .5s;
+}
+
+.current {
+    background-color: white;
+    color: black;
+}
