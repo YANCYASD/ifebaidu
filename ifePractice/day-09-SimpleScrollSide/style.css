@@ -50,6 +50,7 @@
     line-height: 40px;
     border-bottom: 1px white solid;
     transition: all .5s;
+    cursor: pointer;
 }
 
 .current {
