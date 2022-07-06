@@ -1,10 +1,13 @@
+const today = new Date();
+const todayYear = today.getFullYear();
+const todayMonth = today.getMonth() + 1;
+
 (function() {
     let datePicker = {};
     datePicker.getMonthDate = function (year, month) {
       let ret = [];
       let today = new Date();
       let currentDate = today.getDate()
-      console.log(currentDate);
       if (!year || !month) {
         year = today.getFullYear();
         month = today.getMonth() + 1;
@@ -31,18 +34,18 @@
                       month:prevMonth,
                       date:i-firstWeekDay ,
                       showDate:lastDateOfLastMonth-firstWeekDay+i,
-                      isCurrentMonth:false,
+                      isCurrentMonth:"pre",
                   }
               )
           }
       }
           for(let i=1;i<=lastDate;i++){
-            let isCurrentDay = currentDate === i
+            let isCurrentDay = currentDate === i && (year === todayYear) && (todayMonth === month)
               ret.push({
                   month:month,
                   date:i,
                   showDate:i,
-                  isCurrentMonth:true,
+                  isCurrentMonth:"current",
                   isCurrentDay,
               })
           }
@@ -57,7 +60,7 @@
                   month:nextMonth,
                   date:lastDate + i,
                   showDate: i,
-                  isCurrentMonth:false
+                  isCurrentMonth:"next"
               })
           }
       }
