@@ -2,15 +2,17 @@ window.onload = function () {
   var divs = document.querySelectorAll("main div");
   var nav = document.querySelector(".nav");
   var navs = [];
+  var divsBorderline = []
   for (var i = 0; i < divs.length; i++) {
     var navItem = document.createElement("div");
     navItem.classList.add("sub");
     navItem.innerHTML = divs[i].className;
     navItem.dataset.scrollTop = divs[i].offsetTop;
-    divs[i].dataset.scrollTop = divs[i].offsetTop + divs[i].offsetHeight;
+    divsBorderline.push(divs[i].offsetTop + divs[i].offsetHeight/2); 
     nav.appendChild(navItem);
     navs.push(navItem);
   }
+  console.log(divsBorderline);
   for (let i = 0; i < navs.length; i++) {
     navs[i].addEventListener("click", function () {
       document.documentElement.scroll({
@@ -27,18 +29,30 @@ window.onload = function () {
   }
   navs[0].classList.add("current");
   // console.log(divs[1].offsetTop);
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", function (e) {
+    // console.log(e);
     console.log(document.documentElement.scrollTop);
     var scrollT = document.documentElement.scrollTop;
-    if (scrollT >= 0 && scrollT < 500) {
-      clean(navs);
-      navs[0].classList.add("current");
-    } else if (scrollT >= 500 && scrollT < 1800) {
-      clean(navs);
-      navs[1].classList.add("current");
-    } else if (scrollT >= 1800 && scrollT < 3000) {
-      clean(navs);
-      navs[2].classList.add("current");
-    }
+    console.log(findIndexByRange(divsBorderline,scrollT));
+    let i =findIndexByRange(divsBorderline,scrollT);
+    clean(navs);
+    navs[i].classList.add("current")
   });
+
+
+  function findIndexByRange(rangeArray,value) {
+    let index = 0;
+    rangeArray.forEach((intervelVal,intervelIndex) => {
+      if(value > intervelVal){
+        index = intervelIndex + 1;
+      }
+    });
+    if(index === rangeArray.length) {
+      index -= 1; 
+    }
+    return index;
+  }
 };
+
+
+
