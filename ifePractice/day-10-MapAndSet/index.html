@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zn-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //使用 Set 去除数组的重复
+    function dedupe(array) {
+      // your complement
+      let set = new Set(array);
+      return Array.from(set);
+    }
+
+    //利用 Set 实现并集（Union）
+    function union(arr1, arr2) {
+      // your complement
+      let set = new Set([...arr1, ...arr2]);
+      return Array.from(set);
+    }
+    //利用 Set 实现交集（Union）
+    function intersect(arr1, arr2) {
+      // your complement
+      let newArr = [...arr1].filter((i) => {
+        return arr2.has(i);
+      });
+      return Array.from(newArr);
+    }
+    //利用 Set 实现差集（Union）
+    function difference(arr1, arr2) {
+      // your complement
+      let newArr = [...arr1].filter((i) => {
+        return !arr2.has(i);
+      });
+      return Array.from(newArr);
+    }
+
+    //测试用例
+    console.log(dedupe([1, 1, 2, 3])); // [1, 2, 3]
+    let a = new Set([1, 2, 3]);
+    let b = new Set([4, 3, 2]);
+    console.log(union(a, b)); // -> Set {1, 2, 3, 4}
+    console.log(intersect(a, b)); // -> Set {2, 3}
+    console.log(difference(a, b)); // ->  Set {1}
+
+    // 封装一个函数实现 Map 转为 数组
+    function strMapToArray(map) {
+      // your compement
+    }
+
+    // 封装一个函数实现 数组 转为 Map
+    function arrayTostrMap(arr) {
+      // your compement
+      return new Map(arr);
+    }
+
+    // 封装一个函数实现 Map 转为 对象
+    function strMapToObj(strMap) {
+      // your compement
+      return Object.fromEntries(strMap)
+    }
+    // 封装一个函数实现 对象转为 Map
+    function objToStrMap(obj) {
+      let strMap = new Map();
+      for (let k of Object.keys(obj)) {
+        strMap.set(k, obj[k]);
+      }
+      return strMap;
+    }
+
+    // 封装一个函数实现 Map 转为 JSON
+    function strMapToJson(strMap) {
+      return JSON.stringify(strMapToObj(strMap));
+    }
+
+    // 封装一个函数实现 JSON 转为 Map
+    function jsonToStrMap(jsonStr) {
+      return objToStrMap(JSON.parse(jsonStr));
+    }
+  </script>
+</html>
