@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+</body>
+<script>
+function isEmail(emailStr) {
+  // your implement
+  var reg =  /.*@.*(\.com)$/;
+  return reg.test(emailStr)
+}
+//测试用例
+console.log(isEmail("123456789@qq.com")); //-> true
+console.log(isEmail("jack@baidu.com")); //-> true
+console.log(isEmail("jackbaidu.com")); //-> false
+
+// 判断是否为手机号，返回一个布尔值
+function isMobilePhone(phone) {
+  // your implement
+  var reg = /^\d{11}$/
+  return reg.test(phone)
+}
+
+//测试用例
+console.log(isMobilePhone("12345678909")); //-> true
+console.log(isMobilePhone("dfhsuh343")); //-> false
+
+//利用正则表达式，去除字符串中重复的字母,返回去重之后的字符串
+function removeDuplicate(str) {
+  // your implement
+  var reg = /(\w)\1+/gi;
+  return str.replace(reg,'$1');
+}
+//测试用例
+console.log(removeDuplicate("aab")); //->"ab"
+console.log(removeDuplicate("abc")); //->"abc"
+console.log(removeDuplicate("aaaaaabbbbbbbccccccc")); //->"abc"
+
+//利用正则表达式处理字符串，将连字符式字符串转化为小驼峰式命名并返回
+function toSmallHump(str) {
+  // your implement
+  var reg1 = /(?<=-)\w/g
+  return str.replace(reg1,(e)=>{return e.toUpperCase()}).replace(/-/g,"");
+  
+}
+
+//测试用例
+console.log(toSmallHump("get-element-by-id")); //->"getElementById"
+console.log(toSmallHump("data-id")); //->"dataId"
+
+//获取 url 中的参数
+function getUrlParam(url, key) {
+  // your implement
+  var reg = new RegExp(`(?<=.com\?name=)(.*)(?=&)`)
+  return url.match(reg);
+}
+
+//测试用例
+console.log(getUrlParam("http://xxxx.com?name=jackson&id=123", "name")); //->"jackson"
+console.log(getUrlParam("http://xxxx.com?name=jackson&id=123", "id")); //->"123"
+</script>
+</html>
